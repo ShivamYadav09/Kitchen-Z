@@ -1,0 +1,753 @@
+/*-----------------------------------------------------------------------------------------*/
+/* BASIC SETUP  base color: #3499b0                   #e67e22
+/*-----------------------------------------------------------------------------------------*/
+
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html{
+	background-color: #ffffff;
+	color: #555;
+	font-family: 'Noto Sans', 'Arial', sans-serif;
+	font-weight: 400;
+	font-size: 20px;  /* we define absolute value here and use it to relatively define other sizes */
+	text-rendering: optimizeLegibility;
+}
+
+
+/*used to clear float after an element. Read it up at: https://www.w3schools.com/howto/howto_css_clearfix.asp*/
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*-----------------------------------------------------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/*-----------------------------------------------------------------------------------------*/
+
+.row{
+	max-width: 1240px; /* if I go above 1240 then there is additional white space on the right side. Why? */
+	/*max-width: screen.width;*/
+	margin: 0 auto; /* centering the contents of the web page */
+}
+
+section {
+	padding: 80px 80px;
+}
+
+.box{
+	padding: 1%;
+	text-align: justify;
+}
+/*-------------------- HEADINGS --------------------*/
+
+h1, h2, h3{
+	margin: 0;
+	color: #aaa;
+	font-size: 200%; /*200% of 20px = 40px */
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	word-spacing: 4px;
+}
+
+h2{
+	font-size: 180%;
+	word-spacing: 3px;
+	text-align: center;
+	margin-bottom: 30px;
+	color: #222;
+
+}
+
+h2:after {
+	display: block;
+	height: 2px;
+	background-color: #3499b0;
+	content: " ";
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+h3 {
+	font-size: 110%;
+	color: #222;
+	margin-bottom: 15px; 
+	letter-spacing: 0px;
+}
+
+
+/*---------------------FEATURES--------------------*/
+
+.section-features .long-copy{
+	margin-bottom: 30px;
+}
+
+
+
+
+/*--------------------PARAGRAPHS-------------------*/
+.long-copy{
+	line-height: 145%;
+	width: 60%;
+	margin-left: 20%; /*in order to center the components since we are changing the width of line*/
+}
+
+.box p{
+	font-size: 90%;
+	line-height: 145%;
+}
+
+/*--------------------- ICONS ---------------------*/
+
+/*It is just a font, so we can do everything that can be done with a font like size, margin, padding, etc.*/
+.icon-big{
+	font-size: 200%;
+	display: block;
+	color: #3499b0;
+	margin-bottom: 10px;
+}
+
+
+.section-cities .icon-big{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	color: #3499b0;
+	font-size: 120%;
+	/* secrets to align text and icons */
+	margin-top: 5px;    /*we can also use -ve margins. margin-top: -2px; which pulls up instead of pushing down */
+	line-height: 120%;
+	vertical-align: middle;
+	margin-right: 8px;
+}
+
+.section-plans .icon-big{
+	display: inline-block;
+	width: 30px;
+	text-align: center;
+	color: #3499b0;
+	font-size: 120%;
+	/* secrets to align text and icons */
+	margin-top: 5px;    /*we can also use -ve margins. margin-top: -2px; which pulls up instead of pushing down */
+	line-height: 120%;
+	vertical-align: middle;
+	margin-right: 8px;
+}
+
+.icon-check{
+	font-size: 48px;
+}
+
+/*-------------------- GENEREIC LINKS --------------------*/
+
+a:link,
+a:visited{
+	color: #3499b0;
+	text-decoration: none; /*get rid of the original underline which comes with 'a' tag*/
+	border-bottom: 1px solid #3499b0;
+}
+
+
+a:hover,
+a:active{
+	color: #555;
+	text-decoration: none;
+	border-bottom: 1px solid #555;
+	-webkit-transition: border-bottom 0.2s, color 0.2s;
+	transition: border-bottom 0.2s, color 0.2s;
+}
+
+
+/*-------------------- BUTTONS --------------------*/
+
+.btn:link,
+.btn:visited, 
+input[type=submit]{   /*normal state and visited state*/
+	display: inline-block;
+	padding: 10px 30px;
+	margin-top: 10px;
+	font-weight: 400;
+	text-decoration: none;
+	border-radius: 200px;  /*rounding off the edges of button*/
+	color: #fff;
+	-webkit-transition: background-color 0.3s, border 0.2s, color 0.2s;
+	transition: background-color 0.3s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {
+	background-color: #3499b0;
+	border: 1px solid #3499b0;
+}
+
+.btn-full:hover,
+.btn-full:active,
+input[type=submit]:hover,
+input[type=submit]:active{
+	background-color: #82450f;
+	border: 1px solid #82450f;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+	border: 1px solid #3499b0;
+	color: #3499b0;
+	margin-left: 20px;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+	color: #fff;
+	background-color: #82450f;
+	border: 1px solid #fff;
+	margin-left: 20px;
+}
+
+.btn-app:link,
+.btn-app:visited{
+	border-bottom: none;
+}
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* HEADER */
+/*-----------------------------------------------------------------------------------------*/
+
+header{
+	background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url('organic.jpg'); /*gradient tells if the change we desire from top to bottom. Here we keep it same as
+	            we do not desire any gradient. rgba we provide a alpha of 0.8 i.e. we allow only 20% color of background image to pass */
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	height: 100vh; /*100% of view region*/
+}
+
+.hero-text-box{
+	position: relative;
+    padding-left: 90px;
+	width: 100%;
+	width: screen.width;
+	top: 30%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.hero-text-box .btn{
+    margin-top: 40px;
+}
+
+.logo{
+	/*position: absolute;
+	height: auto;
+	width: 7%;
+	float: left;
+	margin-left: 10%;
+	margin-top: 20px;*/
+	height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 5px;
+    margin-left: 10%;
+}
+
+.logo-black{
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin-top: 5px;
+    margin-left: 10%;
+}
+
+
+.sticky .logo-black{
+    display: block;
+}
+
+.sticky .logo{
+    display: none;
+}
+
+.main-nav{
+	float: right;
+	list-style: none;
+	padding: 10px;
+	padding-right: 7%;
+}
+
+.sticky .main-nav{
+    padding: 0;
+    line-height: 0;
+}
+
+/* sticky navi */
+.sticky{
+    position: fixed;
+    float: right;
+    top:0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 2px #a8a8a8;
+    z-index: 9999; /* our sticky nav will be the top element in vertical stack of elements */
+}
+
+
+.main-nav li {
+	display: inline-block;
+	margin: 30px 15px;
+	font-size: 80%
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+	padding: 5px 0px;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	border-bottom: 2px solid transparent;
+	-webkit-transition: border-bottom 0.2s;
+	transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+	border-bottom: 2px solid #3499b0;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+	padding: 5px 0px;
+	color: #555;
+}
+
+
+
+.mobile-nav-icon{
+	float: right;
+	margin-top: 30px;
+	cursor: pointer;
+	display: none;
+
+}
+
+
+.mobile-nav-icon ion-icon{
+	padding-top: 10px;
+	font-size: 300%;
+	color: #fff;
+}
+
+.sticky .mobile-nav-icon ion-icon{
+	padding-top: 0;
+}
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* MEALS */
+/*-----------------------------------------------------------------------------------------*/
+
+.section-meals{
+	padding: 0;
+}
+
+.meals-show{
+	list-style: none;
+	width: 100%;
+}
+
+.meals-show li{
+	display: block;
+	float: left;
+	width:25%;
+	/* padding: 5%; */
+}
+
+.meal-photo{
+	width: 100%;
+	margin: 0;
+	overflow: hidden;
+	background-color: #000;
+}
+
+.meal-photo img{
+	opacity: 0.7;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: scale(1.20);
+	transform: scale(1.20);  /*zooming into the image by 20%*/
+}
+
+.meal-photo img:hover {
+	-webkit-transform: scale(1.03);
+	transform: scale(1.03);
+	-webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+	transition: opacity 0.5s, -webkit-transform 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+	opacity: 1;
+}
+
+/*-----------------------------------------------------------------------------------------*/
+/* HOW IT WORKS */
+/*-----------------------------------------------------------------------------------------*/
+
+.section-steps{
+	background-color: #E0DEDE;
+}
+
+.steps-box{
+	margin-top: 30px;
+}
+
+.steps-box:first-child {
+	text-align: right;  /* text-align property works for all imline elements including images and texts*/
+	padding-right: 3%;
+}
+
+.steps-box:last-child{
+	padding-left: 3%;
+	margin-top: 70px;
+}
+
+.app-screen{
+	width: 40%;
+}
+
+.works-step{
+	margin-bottom: 50px;
+}
+
+.works-step:last-of-type{
+	margin-bottom: 80px;
+}
+
+.works-step div{
+	color: #3499b0;
+	border: 2px solid #3499b0;
+	border-radius: 50%; /*making the border circle*/
+	height: 45px;
+	width:  45px;
+	text-align: center;
+	display: inline-block;
+	padding: 5px;
+	float: left;
+	font-size: 130%;
+	margin-right: 20px;
+}
+
+.btn-app img{
+	height: 50px;
+	width: auto;
+	margin-right: 10px;
+}
+
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* SECTION CITIES */
+/*-----------------------------------------------------------------------------------------*/
+
+.section-cities img{
+	width: 80%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.title{
+	padding-bottom: 50px;
+}
+
+.city-feature{
+	vertical-align: center;
+}
+
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* SECTION TESTIMONIALS */
+/*-----------------------------------------------------------------------------------------*/
+
+.section-testimonials{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.8)), to(rgba(0,0,0,0.8))),url(images/back-customers-min.jpg);
+	background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(images/back-customers.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+
+.section-testimonials h2{
+	color: #ccc;
+	margin-bottom: 80px;
+}
+
+blockquote{
+	padding: 2%;
+	font-family: 'Open Sans';
+	font-style: italic;
+	color: #ccc;
+	font-size: 90%;
+	line-height: 130%;
+	font-style: justify;
+	position: relative;
+}
+
+cite{
+	display: block;
+	margin-top: 20px;
+}
+
+cite img{
+	width: 50px;
+	height: auto;
+	border-radius: 50%;
+	border: 1px solid #3499b0;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+blockquote:before{
+	position: absolute; /* to make a component's positon absolute we need to make sure that it's parent's position is relative */
+	display: block;
+	top: -10px;
+	left: -3px;
+	content: "\201C";  /* CSS glyphs - https://css-tricks.com/snippets/html/glyphs/  */
+	font-size: 400%;
+}
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* SIGN UP SECTION */
+/*-----------------------------------------------------------------------------------------*/
+
+.section-plans{
+	background-color: #E0DEDE;
+}
+
+.section-plans h3{
+	font-family: 'Roboto';
+	font-weight: 100;
+}
+
+.section-plans .btn{
+	/* margin-top: 40px; */
+	margin-bottom: 20px;
+}
+
+.plan-box{
+	background-color: #fff;
+	border-radius: 10px;
+	width: 90%;
+	margin-left: 5%; /*centering the contents box by 10% / 2 = 5% */
+	line-height: 200%;
+	padding: 15px;
+	font-family: 'Roboto';
+	margin-top: 50px;
+	-webkit-box-shadow: 2px 3px 3px #AAA;
+	box-shadow: 2px 3px 3px #AAA; /* y-axis x-axis blur color */
+}
+
+.plan-box div:first-child{
+	border-bottom: solid 1px #E0DEDE;
+}
+
+
+
+.plan-box div:last-child{
+	text-align: center; /* we can align div but not button */
+}
+
+
+.plan-price-per-meal{
+	font-size: 80%;
+	margin-bottom: 30px;
+}
+
+.plan-price{
+	font-size: 300%;
+	font-family: 'Roboto';
+	font-weight: 100;
+	margin-bottom: 10px;
+	color: #3499b0;
+}
+
+.plan-price span{
+	font-size: 60%; /* here the % is calculated based on the 300% font-size of it's parent and thus using 100% will result in the same size */
+	font-weight: 400; /* inherits the font-weight of parent. But here size is less thus we reset the font-weight */
+}
+
+.section-plans .btn{
+	padding: 5px 30px;
+	margin-top: 50px;
+	margin-left: 0;
+}
+
+.plan-box ul{
+	list-style: none;
+}
+
+.plan-box ul li{
+	padding: 5px 0;
+}
+
+
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* FORM */
+/*-----------------------------------------------------------------------------------------*/
+
+
+.contact-form{
+	width: 60%;
+	margin: 0 auto;  /* centers the contact form inside the parent element */ 
+}
+
+.section-form h2{
+	margin-bottom: 100px;
+}
+
+input[type=text],
+input[type=email],
+textarea {
+	width: 100%; /*fill the entire parent i.e. the 2 of 3 column size */
+	padding: 7px;
+	border-radius: 2px;
+	border: solid 1px #CCC;
+}
+
+select{
+	border-radius: 2px;
+	border: solid 1px #CCC;
+	font-family: 'Roboto'
+}
+
+.contact-form .row:after {
+	padding:7px;
+}
+
+.checkbox{
+	padding-bottom: 7px;
+}
+
+/*     *:focus {outline: none;} removes the outer blue border when the box is selected      */
+
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* FOOTER */
+/*-----------------------------------------------------------------------------------------*/
+
+
+footer{
+	background-color: #333;
+	color: #ccc;
+	font-size: 70%;
+}
+
+
+.footer-nav{
+	list-style: none;
+	float: left;
+}
+
+footer .row ul{
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.social{
+	list-style: none;
+	float: right;
+	margin-bottom: 30px;
+}
+
+.footer-nav li,
+.social li{
+	display: inline-block;
+	margin:0 10px;
+}
+
+.social .icon-big{
+	color: #fff;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social li a:link,
+.social li a:visited{
+	/* text-decoration: none; */
+	color: #fff;
+	border:none;
+	
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+	color: #3499b0;
+	-webkit-transition: color 0.2s #3499b0;
+	transition: color 0.2s #3499b0;
+}
+
+.footer-nav:first-child{
+	padding-top: 10px;
+}
+
+
+.social .fb:hover,
+.social .fb:active{
+	color:#3b5998;
+}
+
+.social .twitter:hover,
+.social .twitter:active{
+	color:#00aced;
+}
+
+.social .insta:hover,
+.social .insta:active{
+	color:#d92e7f;
+}
+
+footer p{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+
+
+
+/*-----------------------------------------------------------------------------------------*/
+/* Animations */
+/*-----------------------------------------------------------------------------------------*/
+
+/*we do this only for elements which come into preview later and thus as plan is in it's place and just pulsing we don'd do it for that*/
+.js--wp-1,
+.js--wp-2,
+.js--wp-3{
+	opacity: 0; /*makes the element invisible*/
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+}
+
+.js--wp-4{
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+}
+
+/*by leaving no gap between the two classes we mean to say that the code will be executed when both the classes are satisfied by the element*/
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated{
+	opacity: 1;
+}
